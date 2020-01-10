@@ -1,8 +1,3 @@
-# Android
-# Build your Android project with Gradle.
-# Add steps that test, sign, and distribute the APK, save build artifacts, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/android
-
 trigger:
 - master
 
@@ -10,19 +5,11 @@ pool:
   vmImage: 'win1803'
 
 steps:
-
-- script: echo $(CX_SERVER)
-  name: echovar_server
-- script: echo $(CX_TEAM)
-  name: echovar_team
 - task: Security static source code analysis@88
   inputs:
-    CheckmarxService: $(CX_SERVER)
+    CheckmarxService: 'https://cxprivatecloud.checkmarx.net'
     projectName: 'AzureDevopsTest'
     preset: 'Checkmarx Default'
-    fullTeamName: $(CX_TEAM)
+    fullTeamName: '\CxServer\SP\EMEA\__psteam'
     incScan: false
     vulnerabilityThreshold: false
-  env:
-    CX_SERVER: $(CX_SERVER)
-    CX_TEAM: $(CX_TEAM)
