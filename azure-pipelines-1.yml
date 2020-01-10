@@ -12,9 +12,9 @@ pool:
 steps:
 - task: Security static source code analysis@88
   inputs:
-    CheckmarxService: 'https://cxprivatecloud.checkmarx.net'
+    CheckmarxService: $(CX_SERVER)
     projectName: 'AzureDevopsTest'
     preset: 'Checkmarx Default'
-    fullTeamName: '\CxServer\SP\EMEA\__psteam'
+    fullTeamName: $(CX_TEAM)
     incScan: false
     vulnerabilityThreshold: false
