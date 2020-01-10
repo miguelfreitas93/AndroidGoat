@@ -17,10 +17,10 @@ steps:
   name: echovar_team
 - task: Security static source code analysis@88
   inputs:
-    CheckmarxService: '$env:CX_SERVER'
+    CheckmarxService: $CX_SERVER
     projectName: 'AzureDevopsTest'
     preset: 'Checkmarx Default'
-    fullTeamName: '$env:CX_TEAM'
+    fullTeamName: $CX_TEAM
     incScan: false
     vulnerabilityThreshold: false
   env:
