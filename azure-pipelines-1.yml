@@ -10,11 +10,19 @@ pool:
   vmImage: 'win1803'
 
 steps:
+
+- script: echo $(CX_SERVER)
+  name: echovar_server
+- script: echo $(CX_TEAM)
+  name: echovar_team
 - task: Security static source code analysis@88
   inputs:
-    CheckmarxService: $(CX_SERVER)
+    CheckmarxService: '$env:CX_SERVER'
     projectName: 'AzureDevopsTest'
     preset: 'Checkmarx Default'
-    fullTeamName: $(CX_TEAM)
+    fullTeamName: '$env:CX_TEAM'
     incScan: false
     vulnerabilityThreshold: false
+  env:
+    CX_SERVER: $(CX_SERVER)
+    CX_TEAM: $(CX_TEAM)
