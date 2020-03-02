@@ -25,7 +25,7 @@ import com.marcohc.toasteroid.Toasteroid;
 The page that allows gives the user below functionalities
 Transfer: Module that allows transfer of amount between two accounts
 View Statement: Module that allows the user to view transaction history for the logged in user
-Change Password:  Module that allows the logged in user to change the password
+Change Module that allows the logged in user to change the password
 @author Dinesh Shetty
 */
 public class PostLogin extends Activity {
