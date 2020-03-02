@@ -55,7 +55,7 @@ public class ChangePassword extends Activity {
 	EditText changePassword_text;
 	//	The TextView that automatically grabs the current logged in user's username
 	TextView textView_Username;
-	// The Button that maps to the change password-Submit button 
+	// The Button that maps to the change Submit button 
 	Button changePassword_button;
 	//	Regex to ensure password is complex enough
     private static final String PASSWORD_PATTERN = 
