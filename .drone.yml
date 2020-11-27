@@ -15,17 +15,17 @@ steps:
       from_secret: cx_user
     CX_TEAM:
       from_secret: cx_team
-    CX_VERSION: 9.2
-    CX_CLIENT_ID: resource_owner_client
-    CX_SCOPE: sast_rest_api
+    CX_VERSION: "9.2"
+    CX_CLIENT_ID: "resource_owner_client"
+    CX_SCOPE: "sast_rest_api"
     CX_CLIENT_SECRET: 
       from_secret: cx_client_secret
-    CX_PRESET: Checkmarx Default
-    CX_CONFIGURATION: Default Configuration
-    CX_EXCLUDE_FOLDERS: .git,.idea,node_modules,tests,test,androidTest
-    CX_EXCLUDE_FILES: *.md,*.min.js
-    CX_VULNERABILITY_SCANNERS: sast
+    CX_PRESET: "Checkmarx Default"
+    CX_CONFIGURATION: "Default Configuration"
+    CX_EXCLUDE_FOLDERS: ".git,.idea,node_modules,tests,test,androidTest"
+    CX_EXCLUDE_FILES: "*.md,*.min.js"
+    CX_VULNERABILITY_SCANNERS: "sast"
     CX_IS_MULTI_TENANT: false
-    CX_BUG_TRACKER: Json
+    CX_BUG_TRACKER: "Json"
     CX_PASSWORD:
       from_secret: cx_password
