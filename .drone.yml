@@ -7,7 +7,7 @@ steps:
   image: openjdk:11.0.5
   commands:
     - wget -q -O ~/cxcli.zip https://download.checkmarx.com/9.0.0/Plugins/CxConsolePlugin-$CX_CLI_VERSION.zip 
-    - unzip ~/cxcli.zip -d ~/cxcli 
+    - unzip -q ~/cxcli.zip -d ~/cxcli 
     - rm -rf ~/cxcli.zip 
     - chmod +x ~/cxcli/runCxConsole.sh
     - export CX_PROJECT_NAME=$(basename "$DRONE_REPO")
