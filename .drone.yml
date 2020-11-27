@@ -7,24 +7,7 @@ steps:
   image: checkmarx/cx-flow:1.6.12
   commands:
     - export CX_PROJECT_NAME=$(basename "$DRONE_REPO")
-    - java -Xms512m -Xmx2048m -Djava.security.egd=file:/dev/./urandom -jar /app/cx-flow.jar \
-      --scan \
-      --f=$DRONE_WORKSPACE \
-      --cx-project=$CX_PROJECT_NAME-$DRONE_BRANCH \
-      --namespace=$CX_PROJECT_NAME \
-      --app=$CX_PROJECT_NAME \
-      --repo-name=$CX_PROJECT_NAME \
-      --branch=$DRONE_BRANCH \
-      --cx-flow.enabled-vulnerability-scanners="sast" \
-      --cx-flow.bug-tracker=Json \
-      --cx-flow.bug-tracker-impl=Json \
-      --checkmarx.multi-tenant=false \
-      --checkmarx.base-url=$CX_SERVER \
-      --checkmarx.version=9.2 \
-      --checkmarx.preset="$CX_PRESET" \
-      --checkmarx.team="$CX_TEAM" \
-      --checkmarx.username=$CX_USER \
-      --checkmarx.password=$CX_PASSWORD
+    - java -Xms512m -Xmx2048m -Djava.security.egd=file:/dev/./urandom -jar /app/cx-flow.jar --scan --f=$DRONE_WORKSPACE --cx-project=$CX_PROJECT_NAME-$DRONE_BRANCH --namespace=$CX_PROJECT_NAME --app=$CX_PROJECT_NAME --repo-name=$CX_PROJECT_NAME --branch=$DRONE_BRANCH --cx-flow.enabled-vulnerability-scanners="sast" --cx-flow.bug-tracker=Json --cx-flow.bug-tracker-impl=Json --checkmarx.multi-tenant=false --checkmarx.base-url=$CX_SERVER --checkmarx.version=9.2 --checkmarx.preset="$CX_PRESET" --checkmarx.team="$CX_TEAM" --checkmarx.username=$CX_USER --checkmarx.password=$CX_PASSWORD
   environment:
     CX_SERVER:
       from_secret: cx_server
