@@ -4,7 +4,7 @@ name: cxscan
 
 steps:
 - name: Run Checkmarx Scan
-  image: checkmarx/cx-flow:latest
+  image: checkmarx/cx-flow:1.6.12
   commands:
     - export CX_PROJECT_NAME=$(basename "$DRONE_REPO")
     - java -Xms512m -Xmx2048m -Djava.security.egd=file:/dev/./urandom -jar /app/cx-flow.jar \
