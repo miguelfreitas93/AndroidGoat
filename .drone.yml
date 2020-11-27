@@ -7,10 +7,22 @@ steps:
   image: checkmarx/cx-flow:latest
   commands:
     - export CX_PROJECT_NAME=$(basename "$DRONE_REPO")
-    - pwd
-    - ls -la
-    - ls -la /app/
-    #- ~/cxcli/runCxConsole.sh Scan -CxServer $CX_SERVER -CxUser $CX_USER -CxPassword $CX_PASSWORD -ProjectName "$CX_TEAM/$CX_PROJECT_NAME-$DRONE_BRANCH" -preset "$CX_PRESET" -LocationType folder -LocationPath $DRONE_WORKSPACE -SASTHigh $CX_HIGH -SASTMedium $CX_MEDIUM -SASTLow $CX_LOW -ReportXML results-$CX_PROJECT_NAME-$DRONE_BRANCH.xml -ReportPDF results-$CX_PROJECT_NAME-$DRONE_BRANCH.pdf -Comment "git $DRONE_BRANCH@$DRONE_COMMIT" -verbose
+    - java -Xms512m -Xmx2048m -Djava.security.egd=file:/dev/./urandom -jar /app/cx-flow.jar \
+      --scan \
+      --f=$DRONE_WORKSPACE \
+      --cx-project=$CX_PROJECT_NAME-$DRONE_BRANCH \
+      --namespace=$CX_PROJECT_NAME \
+      --app=$CX_PROJECT_NAME \
+      --repo-name=$CX_PROJECT_NAME \
+      --branch=$DRONE_BRANCH \
+      --cx-flow.enabled-vulnerability-scanners="sast" \
+      --checkmarx.multi-tenant=false \
+      --checkmarx.base-url=$CX_SERVER \
+      --checkmarx.version=9.2 \
+      --checkmarx.preset="$CX_PRESET" \
+      --checkmarx.team="$CX_TEAM" \
+      --checkmarx.username=$CX_USER \
+      --checkmarx.password=$CX_PASSWORD
   environment:
     CX_SERVER:
       from_secret: cx_server
@@ -19,10 +31,5 @@ steps:
     CX_TEAM:
       from_secret: cx_team
     CX_PRESET: Checkmarx Default
-    CX_HIGH: 0
-    CX_MEDIUM: 0
-    CX_LOW: 0
-    CX_CLI_VERSION:
-      from_secret: cx_cli_version
     CX_PASSWORD:
       from_secret: cx_password
