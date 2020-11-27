@@ -16,6 +16,8 @@ steps:
       --repo-name=$CX_PROJECT_NAME \
       --branch=$DRONE_BRANCH \
       --cx-flow.enabled-vulnerability-scanners="sast" \
+      --cx-flow.bug-tracker=Json \
+      --cx-flow.bug-tracker-impl=Json \
       --checkmarx.multi-tenant=false \
       --checkmarx.base-url=$CX_SERVER \
       --checkmarx.version=9.2 \
